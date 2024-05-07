@@ -25,7 +25,7 @@ public class GenerateMeigenRequestResource {
     public static GenerateMeigenRequestResource init() {
         return GenerateMeigenRequestResource.builder()
             .requestBody(GenerateMeigenRequestBody.init())
-            .projectId("76deee27-eda8-4f8c-8bd5-aa767644a4df")
+            .projectId("ac07c4b9-3dae-4f7c-8d93-36ee8ce885d6")
             .modelId("mistralai/mixtral-8x7b-instruct-v01")
             .input( "<s>[INST] あなたは人の心に響く名言を考えるプロです。\n" + //
                     "以下のような名言をあなたは考えました。[/INST]\n" + //
