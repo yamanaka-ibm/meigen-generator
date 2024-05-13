@@ -1,6 +1,7 @@
 package com.ibm.meigengenerator.infrastructure.client.resource;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.beans.factory.annotation.Value;
 
 import lombok.Builder;
 import lombok.Data;
@@ -20,12 +21,15 @@ public class GenerateMeigenRequestResource {
     @JsonProperty("model_id")
     private final String modelId;
 
+    @Value("${project.id}")
+    private String appProjectId;
+
     private final String input;
 
     public static GenerateMeigenRequestResource init() {
         return GenerateMeigenRequestResource.builder()
             .requestBody(GenerateMeigenRequestBody.init())
-            .projectId("ac07c4b9-3dae-4f7c-8d93-36ee8ce885d6")
+            .projectId(appProjectId)
             .modelId("mistralai/mixtral-8x7b-instruct-v01")
             .input( "<s>[INST] あなたは人の心に響く名言を考えるプロです。\n" + //
                     "以下のような名言をあなたは考えました。[/INST]\n" + //
