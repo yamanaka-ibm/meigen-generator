@@ -1,8 +1,6 @@
 package com.ibm.meigengenerator.infrastructure.client.resource;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.beans.factory.annotation.Value;
-
 import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -21,22 +19,23 @@ public class GenerateMeigenRequestResource {
     @JsonProperty("model_id")
     private final String modelId;
 
-    @Value("${project.id}")
-    private String appProjectId;
-
     private final String input;
 
-    public static GenerateMeigenRequestResource init() {
-        return GenerateMeigenRequestResource.builder()
-            .requestBody(GenerateMeigenRequestBody.init())
-            .projectId(appProjectId)
-            .modelId("mistralai/mixtral-8x7b-instruct-v01")
-            .input( "<s>[INST] あなたは人の心に響く名言を考えるプロです。\n" + //
-                    "以下のような名言をあなたは考えました。[/INST]\n" + //
-                    "- いつか、必ず、チャンスの順番が来ると信じなさい\n" + //
-                    "- きみはこれからも何度もつまづく。でもそのたびに立ち直る強さももってるんだよ\n" + //
-                    "</s>\n" + //
-                    "[INST] 人の心に響く名言を200文字以内で1件のみ日本語で生成してください。 [/INST]\n")
-            .build();
+    public static GenerateMeigenRequestResource init(String projectId) {
+        System.out.print(projectId);
+
+        return GenerateMeigenRequestResource
+                .builder()
+                .requestBody(GenerateMeigenRequestBody.init())
+                .projectId(projectId)
+                .modelId("mistralai/mixtral-8x7b-instruct-v01")
+                .input(
+                        "<s>[INST] あなたは人の心に響く名言を考えるプロです。\n" + //
+                                "以下のような名言をあなたは考えました。[/INST]\n" + //
+                                "- いつか、必ず、チャンスの順番が来ると信じなさい\n" + //
+                                "- きみはこれからも何度もつまづく。でもそのたびに立ち直る強さももってるんだよ\n" + //
+                                "</s>\n" + //
+                                "[INST] 人の心に響く名言を200文字以内で1件のみ日本語で生成してください。 [/INST]\n")
+                .build();
     }
 }

@@ -8,4 +8,5 @@ EXPOSE 8080
 WORKDIR /app
 COPY --from=build /home/gradle/src/build/libs/*.jar ./meigen-generator.jar
 ENV APP_API_KEY ADD_API_KEY_HERE
+ENV APP_PROJECT_ID ADD_APP_PROJECT_ID
 ENTRYPOINT ["java", "-jar", "meigen-generator.jar"]
