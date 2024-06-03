@@ -1,0 +1,12 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: meigen-generator-route
+spec:
+  tls:
+    termination: edge
+  to:
+    kind: Service
+    name: meigen-generator-service
+    weight: 100
+  wildcardPolicy: None
