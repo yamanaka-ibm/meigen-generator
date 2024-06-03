@@ -1,0 +1,8 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+# TODO: Change YOURNAMEHERE to your name
+namespace: YOURNAMEHERE_meigen-generator
+resources:
+  - deployment.yaml
+  - service.yaml
+  - route.yaml
